@@ -178,14 +178,7 @@ jobs:
 
           echo "✅ ai_analysis.json found."
 
-          echo ""
-          echo "===== AI ANALYSIS ====="
-
           cat kaggle-worker/output/ai_analysis.json
-
-      # --------------------------------------------------
-      # 12. Validate AI JSON
-      # --------------------------------------------------
 
       - name: Validate AI JSON
         run: |
@@ -205,8 +198,7 @@ jobs:
 
           if data.get("status") != "success":
               raise RuntimeError(
-                  f"AI analysis status is not success: "
-                  f"{data.get('status')}"
+                  "AI analysis status is not success."
               )
 
           repositories = data.get(
@@ -216,7 +208,7 @@ jobs:
 
           if not repositories:
               raise RuntimeError(
-                  "AI analysis contains no repositories."
+                  "No repositories in AI analysis."
               )
 
           failed = [
@@ -226,37 +218,26 @@ jobs:
           ]
 
           if failed:
-              names = [
-                  repository.get(
-                      "full_name",
-                      "Unknown",
-                  )
-                  for repository in failed
-              ]
-
               raise RuntimeError(
-                  "AI analysis failed for: "
-                  + ", ".join(names)
+                  "One or more repositories failed AI analysis."
               )
 
           print(
-              f"✅ AI analysis validated: "
-              f"{len(repositories)} repositories"
+              f"✅ Validated {len(repositories)} repositories."
           )
           PY
 
-      # --------------------------------------------------
-      # 13. Generate reports
-      # --------------------------------------------------
-
-      - name: Generate reports
+      - name: Send Dev Radar email
+        env:
+          EMAIL_USER: ${{ secrets.EMAIL_USER }}
+          EMAIL_APP_PASSWORD: ${{ secrets.EMAIL_APP_PASSWORD }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
         run: |
-          echo "📄 Generating reports..."
+          python scripts/send_email.py
 
-          # This will be replaced with the final
-          # email/report generator once implemented.
-
-          echo "Report generation step completed."
+      - name: Finalize successful run
+        run: |
+          python scripts/finalize_daily_run.py
 
       # --------------------------------------------------
       # 14. Commit generated reports/data
@@ -267,25 +248,25 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email \
             "41898282+github-actions[bot]@users.noreply.github.com"
-      
+
           echo "===== Git status before commit ====="
           git status --short
-      
+
           # Add permanent website data only.
           if [ -d "web/public/data" ]; then
             git add web/public/data
           fi
-      
+
           # Commit if there are staged changes.
           if git diff --cached --quiet; then
             echo "ℹ️ No permanent data changes to commit."
           else
             git commit -m "chore: update daily radar"
           fi
-      
+
           echo "===== Git status before rebase ====="
           git status --short
-      
+
           # Rebase on the latest remote main branch.
           # --autostash temporarily stores any unstaged
           # changes so the rebase can proceed.
@@ -293,7 +274,7 @@ jobs:
             --rebase \
             --autostash \
             origin main
-      
+
           git push origin main
-      
+
           echo "✅ Changes pushed successfully."

@@ -6,27 +6,38 @@ HISTORY_FILE = Path("data/history.json")
 
 
 def load_history() -> dict:
-    """Load previous radar results."""
+    """Load previous radar history."""
 
     if not HISTORY_FILE.exists():
         return {}
 
-    with HISTORY_FILE.open("r", encoding="utf-8") as file:
+    with HISTORY_FILE.open(
+        "r",
+        encoding="utf-8",
+    ) as file:
         return json.load(file)
 
 
-def save_history(repositories: list[dict]) -> None:
-    """Save the current radar results."""
+def save_history(
+    repositories: list[dict],
+) -> None:
+    """
+    Add successfully processed repositories
+    to the existing history.
+    """
 
     HISTORY_FILE.parent.mkdir(
         parents=True,
         exist_ok=True,
     )
 
-    history = {}
+    history = load_history()
 
     for repository in repositories:
-        full_name = repository.get("full_name")
+
+        full_name = repository.get(
+            "full_name"
+        )
 
         if not full_name:
             continue
@@ -50,8 +61,10 @@ def save_history(repositories: list[dict]) -> None:
         "w",
         encoding="utf-8",
     ) as file:
+
         json.dump(
             history,
             file,
             indent=2,
+            ensure_ascii=False,
         )
