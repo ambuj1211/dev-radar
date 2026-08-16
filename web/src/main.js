@@ -15,77 +15,167 @@ const newCount =
 const languageFilter =
     document.getElementById("language-filter");
 
+const searchInput =
+    document.getElementById("search-input");
 
-function renderRepositories(language = "all") {
+const sortFilter =
+    document.getElementById("sort-filter");
 
-    const filtered = repositories.filter(
-        repository =>
-            language === "all" ||
-            repository.language === language
+function renderRepositories(
+    language = "all",
+    search = "",
+    sort = "score"
+) {
+
+    const searchTerm =
+        search.trim().toLowerCase();
+
+    let filtered = repositories.filter(
+        repository => {
+
+            const matchesLanguage =
+                language === "all" ||
+                repository.language === language;
+
+            const searchableText = [
+                repository.full_name,
+                repository.description,
+                repository.language
+            ]
+                .filter(Boolean)
+                .join(" ")
+                .toLowerCase();
+
+            const matchesSearch =
+                !searchTerm ||
+                searchableText.includes(searchTerm);
+
+            return (
+                matchesLanguage &&
+                matchesSearch
+            );
+        }
     );
+
+    filtered.sort((a, b) => {
+
+        if (sort === "stars") {
+            return (
+                (b.stargazers_count || 0) -
+                (a.stargazers_count || 0)
+            );
+        }
+
+        if (sort === "growth") {
+            return (
+                (b.star_change || 0) -
+                (a.star_change || 0)
+            );
+        }
+
+        if (sort === "new") {
+            return (
+                (b.change_type === "new") -
+                (a.change_type === "new")
+            );
+        }
+
+        return (
+            (b.radar_score || 0) -
+            (a.radar_score || 0)
+        );
+    });
 
     repositoryList.innerHTML = "";
 
-    filtered.forEach((repository, index) => {
+    filtered.forEach(
+        (repository, index) => {
 
-        const card = document.createElement("article");
+            const card =
+                document.createElement("article");
 
-        card.className = "repository-card";
+            card.className =
+                "repository-card";
 
-        card.innerHTML = `
-            <div class="rank">
-                #${index + 1}
-            </div>
+            card.innerHTML = `
+                <div class="rank">
+                    #${index + 1}
+                </div>
 
-            <div class="card-header">
-                <h3>${repository.full_name}</h3>
+                <div class="card-header">
 
-                <span class="score">
-                    ${Number(repository.radar_score || 0).toFixed(1)}
-                </span>
-            </div>
+                    <h3>
+                        ${repository.full_name}
+                    </h3>
 
-            <p class="description">
-                ${repository.description || "No description available."}
-            </p>
+                    <span class="score">
+                        ${Number(
+                repository.radar_score || 0
+            ).toFixed(1)}
+                    </span>
 
-            <div class="metrics">
-                <span>
-                    ⭐ ${Number(
-            repository.stargazers_count || 0
-        ).toLocaleString()}
-                </span>
+                </div>
 
-                <span>
-                    🍴 ${Number(
-            repository.forks_count || 0
-        ).toLocaleString()}
-                </span>
+                <p class="description">
+                    ${repository.description ||
+                "No description available."
+                }
+                </p>
 
-                <span>
-                    📝 ${repository.language || "Unknown"}
-                </span>
-            </div>
+                <div class="metrics">
 
-            <div class="card-footer">
+                    <span>
+                        ⭐ ${Number(
+                    repository.stargazers_count || 0
+                ).toLocaleString()
+                }
+                    </span>
 
-                <span class="change ${repository.change_type || "unknown"}">
-                    ${repository.change_type || "unknown"}
-                </span>
+                    <span>
+                        🍴 ${Number(
+                    repository.forks_count || 0
+                ).toLocaleString()
+                }
+                    </span>
 
-                <a
-                    href="${repository.html_url}"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    View Repository →
-                </a>
+                    <span>
+                        📈 ${Number(
+                    repository.star_change || 0
+                ).toLocaleString()
+                }
+                    </span>
 
-            </div>
-        `;
+                    <span>
+                        📝 ${repository.language ||
+                "Unknown"
+                }
+                    </span>
 
-        repositoryList.appendChild(card);
-    });
+                </div>
+
+                <div class="card-footer">
+
+                    <span class="change ${repository.change_type || "unknown"
+                }">
+                        ${repository.change_type ||
+                "unknown"
+                }
+                    </span>
+
+                    <a
+                        href="${repository.html_url}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        View Repository →
+                    </a>
+
+                </div>
+            `;
+
+            repositoryList.appendChild(card);
+        }
+    );
 }
 
 
@@ -109,11 +199,24 @@ function updateStats() {
 }
 
 
-languageFilter.addEventListener(
-    "change",
-    event => {
+searchInput.addEventListener(
+    "input",
+    () => {
         renderRepositories(
-            event.target.value
+            languageFilter.value,
+            searchInput.value,
+            sortFilter.value
+        );
+    }
+);
+
+sortFilter.addEventListener(
+    "change",
+    () => {
+        renderRepositories(
+            languageFilter.value,
+            searchInput.value,
+            sortFilter.value
         );
     }
 );

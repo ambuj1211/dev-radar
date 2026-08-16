@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,82 +12,90 @@
 
 <body>
 
-<header class="header">
-    <div>
-        <h1>🚀 Dev Radar</h1>
-        <p>Discover what is trending in open source.</p>
-    </div>
-
-    <div class="radar-status">
-        <span class="status-dot"></span>
-        Live Radar
-    </div>
-</header>
-
-<main>
-
-    <section class="hero">
-        <h2>Today's Developer Radar</h2>
-
-        <p>
-            Discover repositories based on popularity,
-            activity, freshness and community strength.
-        </p>
-    </section>
-
-    <section class="stats">
-
-        <div class="stat-card">
-            <span>Repositories</span>
-            <strong id="repo-count">0</strong>
+    <header class="header">
+        <div>
+            <h1>🚀 Dev Radar</h1>
+            <p>Discover what is trending in open source.</p>
         </div>
 
-        <div class="stat-card">
-            <span>Top Score</span>
-            <strong id="top-score">0</strong>
+        <div class="radar-status">
+            <span class="status-dot"></span>
+            Live Radar
         </div>
+    </header>
 
-        <div class="stat-card">
-            <span>New Projects</span>
-            <strong id="new-count">0</strong>
-        </div>
+    <main>
 
-    </section>
+        <section class="hero">
+            <h2>Today's Developer Radar</h2>
 
-    <section>
+            <p>
+                Discover repositories based on popularity,
+                activity, freshness and community strength.
+            </p>
+        </section>
 
-        <div class="section-header">
+        <section class="stats">
 
-            <h2>🔥 Top Repositories</h2>
+            <div class="stat-card">
+                <span>Repositories</span>
+                <strong id="repo-count">0</strong>
+            </div>
 
-            <select id="language-filter">
-                <option value="all">All Languages</option>
-                <option value="Python">Python</option>
-                <option value="JavaScript">JavaScript</option>
-                <option value="TypeScript">TypeScript</option>
-                <option value="Go">Go</option>
-                <option value="Rust">Rust</option>
-            </select>
+            <div class="stat-card">
+                <span>Top Score</span>
+                <strong id="top-score">0</strong>
+            </div>
 
-        </div>
+            <div class="stat-card">
+                <span>New Projects</span>
+                <strong id="new-count">0</strong>
+            </div>
 
-        <div
-            id="repository-list"
-            class="repository-grid"
-        ></div>
+        </section>
 
-    </section>
+        <section>
 
-</main>
+            <div class="section-header">
 
-<footer>
-    <p>Dev Radar • Open Source Intelligence</p>
-</footer>
+                <h2>🔥 Top Repositories</h2>
 
-<script
-    type="module"
-    src="/src/main.js"
-></script>
+                <div class="controls">
+
+                    <input id="search-input" type="search" placeholder="Search repositories..." autocomplete="off">
+
+                    <select id="language-filter">
+                        <option value="all">All Languages</option>
+                        <option value="Python">Python</option>
+                        <option value="JavaScript">JavaScript</option>
+                        <option value="TypeScript">TypeScript</option>
+                        <option value="Go">Go</option>
+                        <option value="Rust">Rust</option>
+                    </select>
+
+                    <select id="sort-filter">
+                        <option value="score">Radar Score</option>
+                        <option value="stars">Stars</option>
+                        <option value="growth">Star Growth</option>
+                        <option value="new">New First</option>
+                    </select>
+
+                </div>
+
+            </div>
+
+            <div id="repository-list" class="repository-grid"></div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Dev Radar • Open Source Intelligence</p>
+    </footer>
+
+    <script type="module" src="/src/main.js"></script>
 
 </body>
+
 </html>

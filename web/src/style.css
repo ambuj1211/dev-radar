@@ -112,6 +112,28 @@ main {
     border: 1px solid #475569;
 }
 
+.controls {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.controls input,
+.controls select {
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #475569;
+    background: #1e293b;
+    color: #e2e8f0;
+}
+
+.controls input {
+    min-width: 240px;
+}
+
+.controls input::placeholder {
+    color: #64748b;
+}
 .repository-grid {
     display: grid;
 
