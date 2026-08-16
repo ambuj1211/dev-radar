@@ -108,58 +108,123 @@ function renderRepositories(
                         ${repository.full_name}
                     </h3>
 
-                    <span class="score">
+                    <div class="score">
                         ${Number(
-                repository.radar_score || 0
-            ).toFixed(1)}
-                    </span>
+                            repository.radar_score || 0
+                        ).toFixed(1)}
+                    </div>
 
                 </div>
 
                 <p class="description">
                     ${repository.description ||
-                "No description available."
-                }
+                            "No description available."
+                            }
                 </p>
+
+                <div class="score-breakdown">
+
+                    <div class="score-row">
+                        <span>⭐ Popularity</span>
+
+                        <div class="score-bar">
+                            <div
+                                class="score-fill"
+                                style="width: ${repository.score_breakdown?.popularity || 0
+                            }%"
+                            ></div>
+                        </div>
+
+                        <span>
+                            ${Number(
+                                repository.score_breakdown?.popularity || 0
+                            ).toFixed(0)
+                            }
+                        </span>
+                    </div>
+                        
+
+                    <div class="score-row">
+                        <span>⚡ Freshness</span>
+
+                        <div class="score-bar">
+                            <div
+                                class="score-fill"
+                                style="width: ${repository.score_breakdown?.freshness || 0
+                            }%"
+                            ></div>
+                        </div>
+
+                        <span>
+                            ${Number(
+                                repository.score_breakdown?.freshness || 0
+                            ).toFixed(0)
+                            }
+                        </span>
+                    </div>
+                        
+
+                    <div class="score-row">
+                        <span>👥 Community</span>
+
+                        <div class="score-bar">
+                            <div
+                                class="score-fill"
+                                style="width: ${repository.score_breakdown?.community || 0
+                            }%"
+                            ></div>
+                        </div>
+
+                        <span>
+                            ${Number(
+                                repository.score_breakdown?.community || 0
+                            ).toFixed(0)
+                            }
+                        </span>
+                    </div>
+
+                </div>
+                        
 
                 <div class="metrics">
 
                     <span>
                         ⭐ ${Number(
-                    repository.stargazers_count || 0
-                ).toLocaleString()
-                }
+                                repository.stargazers_count || 0
+                            ).toLocaleString()
+                            }
                     </span>
 
                     <span>
                         🍴 ${Number(
-                    repository.forks_count || 0
-                ).toLocaleString()
-                }
+                                repository.forks_count || 0
+                            ).toLocaleString()
+                            }
                     </span>
 
                     <span>
                         📈 ${Number(
-                    repository.star_change || 0
-                ).toLocaleString()
-                }
+                                repository.star_change || 0
+                            ).toLocaleString()
+                            }
                     </span>
 
                     <span>
                         📝 ${repository.language ||
-                "Unknown"
-                }
+                            "Unknown"
+                            }
                     </span>
 
                 </div>
+                        
 
                 <div class="card-footer">
 
                     <span class="change ${repository.change_type || "unknown"
-                }">
+                            }">
                         ${repository.change_type ||
-                "unknown"
-                }
+                            "unknown"
+                            }
                     </span>
 
                     <a
@@ -171,7 +236,7 @@ function renderRepositories(
                     </a>
 
                 </div>
-            `;
+`;
 
             repositoryList.appendChild(card);
         }
