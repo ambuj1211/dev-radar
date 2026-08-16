@@ -1,0 +1,17 @@
+{
+  "NousResearch/hermes-agent": {
+    "radar_score": 100.0,
+    "stars": 231480,
+    "forks": 46041
+  },
+  "openclaw/openclaw": {
+    "radar_score": 99.53,
+    "stars": 386464,
+    "forks": 81209
+  },
+  "tensorflow/tensorflow": {
+    "radar_score": 98.98,
+    "stars": 197088,
+    "forks": 76060
+  }
+}
