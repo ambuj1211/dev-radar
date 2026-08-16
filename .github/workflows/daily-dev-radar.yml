@@ -6,6 +6,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: daily-dev-radar
+  cancel-in-progress: false
+
 jobs:
   daily-radar:
     runs-on: ubuntu-latest
@@ -14,48 +18,108 @@ jobs:
       KAGGLE_API_TOKEN: ${{ secrets.KAGGLE_API_TOKEN }}
 
     steps:
+
+      # --------------------------------------------------
+      # 1. Checkout repository
+      # --------------------------------------------------
+
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # --------------------------------------------------
+      # 2. Setup Python
+      # --------------------------------------------------
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
+      # --------------------------------------------------
+      # 3. Install dependencies
+      # --------------------------------------------------
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+
+          if [ -f requirements.txt ]; then
+            pip install -r requirements.txt
+          fi
+
           pip install kaggle
+
+      # --------------------------------------------------
+      # 4. Check Kaggle authentication
+      # --------------------------------------------------
 
       - name: Check Kaggle authentication
         run: |
           kaggle config view
 
+      # --------------------------------------------------
+      # 5. Run Dev Radar
+      # --------------------------------------------------
+
       - name: Run Dev Radar
         run: |
           python main.py
 
+      # --------------------------------------------------
+      # 6. Verify generated Kaggle input
+      # --------------------------------------------------
+
       - name: Verify Kaggle input
         run: |
+          if [ ! -f kaggle-worker/input/daily_input.json ]; then
+            echo "❌ daily_input.json was not created."
+            exit 1
+          fi
+
+          echo "✅ daily_input.json found."
+
+          echo ""
           echo "===== daily_input.json ====="
+
           cat kaggle-worker/input/daily_input.json
 
-      - name: Update Kaggle dataset
+      # --------------------------------------------------
+      # 7. Update existing Kaggle dataset
+      # --------------------------------------------------
+
+      - name: Update Kaggle input dataset
         run: |
           kaggle datasets version \
             -p kaggle-worker/input \
-            -m "Daily Dev Radar input"
+            -m "Daily Dev Radar input - $GITHUB_RUN_ID"
 
-      - name: Run Kaggle AI worker
+      # --------------------------------------------------
+      # 8. Run Kaggle Qwen worker
+      # --------------------------------------------------
+
+      - name: Run Kaggle Qwen worker
         run: |
           kaggle kernels push \
             -p kaggle-worker \
             --accelerator NvidiaTeslaT4
 
+      # --------------------------------------------------
+      # 9. Wait for Kaggle worker
+      # --------------------------------------------------
+
       - name: Wait for Kaggle worker
         run: |
-          for i in {1..60}; do
+          echo "⏳ Waiting for Kaggle Qwen worker..."
+
+          MAX_ATTEMPTS=60
+
+          for ((i=1; i<=MAX_ATTEMPTS; i++)); do
+
+            echo ""
+            echo "Attempt $i/$MAX_ATTEMPTS"
+
             STATUS=$(kaggle kernels status \
               brilliantambuj1211/dev-radar-ai-worker \
               2>&1 || true)
@@ -63,24 +127,37 @@ jobs:
             echo "$STATUS"
 
             if echo "$STATUS" | grep -q "COMPLETE"; then
-              echo "Kaggle worker completed."
+              echo "✅ Kaggle worker completed."
               exit 0
             fi
 
             if echo "$STATUS" | grep -q "ERROR"; then
-              echo "Kaggle worker failed."
+              echo "❌ Kaggle worker failed."
               exit 1
             fi
 
+            if echo "$STATUS" | grep -q "CANCEL"; then
+              echo "❌ Kaggle worker was cancelled."
+              exit 1
+            fi
+
+            echo "⏳ Worker still running..."
+
             sleep 30
+
           done
 
-          echo "Kaggle worker timed out."
+          echo "❌ Kaggle worker timed out."
           exit 1
+
+      # --------------------------------------------------
+      # 10. Download AI analysis
+      # --------------------------------------------------
 
       - name: Download AI analysis
         run: |
           mkdir -p kaggle-worker/output
+
           rm -f kaggle-worker/output/*
 
           kaggle kernels output \
@@ -88,7 +165,136 @@ jobs:
             -p kaggle-worker/output \
             --file-pattern "ai_analysis.json"
 
+      # --------------------------------------------------
+      # 11. Verify AI analysis
+      # --------------------------------------------------
+
       - name: Verify AI analysis
         run: |
-          test -f kaggle-worker/output/ai_analysis.json
+          if [ ! -f kaggle-worker/output/ai_analysis.json ]; then
+            echo "❌ ai_analysis.json was not downloaded."
+            exit 1
+          fi
+
+          echo "✅ ai_analysis.json found."
+
+          echo ""
+          echo "===== AI ANALYSIS ====="
+
           cat kaggle-worker/output/ai_analysis.json
+
+      # --------------------------------------------------
+      # 12. Validate AI JSON
+      # --------------------------------------------------
+
+      - name: Validate AI JSON
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          path = Path(
+              "kaggle-worker/output/ai_analysis.json"
+          )
+
+          with path.open(
+              "r",
+              encoding="utf-8",
+          ) as file:
+              data = json.load(file)
+
+          if data.get("status") != "success":
+              raise RuntimeError(
+                  f"AI analysis status is not success: "
+                  f"{data.get('status')}"
+              )
+
+          repositories = data.get(
+              "repositories",
+              [],
+          )
+
+          if not repositories:
+              raise RuntimeError(
+                  "AI analysis contains no repositories."
+              )
+
+          failed = [
+              repository
+              for repository in repositories
+              if repository.get("status") != "success"
+          ]
+
+          if failed:
+              names = [
+                  repository.get(
+                      "full_name",
+                      "Unknown",
+                  )
+                  for repository in failed
+              ]
+
+              raise RuntimeError(
+                  "AI analysis failed for: "
+                  + ", ".join(names)
+              )
+
+          print(
+              f"✅ AI analysis validated: "
+              f"{len(repositories)} repositories"
+          )
+          PY
+
+      # --------------------------------------------------
+      # 13. Generate reports
+      # --------------------------------------------------
+
+      - name: Generate reports
+        run: |
+          echo "📄 Generating reports..."
+
+          # This will be replaced with the final
+          # email/report generator once implemented.
+
+          echo "Report generation step completed."
+
+      # --------------------------------------------------
+      # 14. Commit generated reports/data
+      # --------------------------------------------------
+
+      - name: Commit generated data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email \
+            "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # Only commit permanent application data.
+          #
+          # Do NOT commit:
+          #   kaggle-worker/input
+          #   kaggle-worker/output
+          #
+          # These are temporary AI pipeline files.
+
+          git add \
+            reports \
+            web/public/data \
+            data
+
+          if git diff --cached --quiet; then
+            echo "ℹ️ No permanent data changes to commit."
+            exit 0
+          fi
+
+          git commit \
+            -m "chore: update daily radar"
+
+          # Get latest remote changes before pushing.
+          git pull \
+            --rebase \
+            origin main
+
+          git push \
+            origin main
+
+          echo "✅ Changes pushed successfully."
