@@ -219,5 +219,6 @@ __marimo__/
 
 reports/__init__.py
 reports/__pycache__/
+reports/*.md
 data/
 web/node_modules/
