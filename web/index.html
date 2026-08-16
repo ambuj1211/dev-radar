@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dev Radar</title>
+
+    <link rel="stylesheet" href="/src/style.css">
+</head>
+
+<body>
+
+<header class="header">
+    <div>
+        <h1>🚀 Dev Radar</h1>
+        <p>Discover what is trending in open source.</p>
+    </div>
+
+    <div class="radar-status">
+        <span class="status-dot"></span>
+        Live Radar
+    </div>
+</header>
+
+<main>
+
+    <section class="hero">
+        <h2>Today's Developer Radar</h2>
+
+        <p>
+            Discover repositories based on popularity,
+            activity, freshness and community strength.
+        </p>
+    </section>
+
+    <section class="stats">
+
+        <div class="stat-card">
+            <span>Repositories</span>
+            <strong id="repo-count">0</strong>
+        </div>
+
+        <div class="stat-card">
+            <span>Top Score</span>
+            <strong id="top-score">0</strong>
+        </div>
+
+        <div class="stat-card">
+            <span>New Projects</span>
+            <strong id="new-count">0</strong>
+        </div>
+
+    </section>
+
+    <section>
+
+        <div class="section-header">
+
+            <h2>🔥 Top Repositories</h2>
+
+            <select id="language-filter">
+                <option value="all">All Languages</option>
+                <option value="Python">Python</option>
+                <option value="JavaScript">JavaScript</option>
+                <option value="TypeScript">TypeScript</option>
+                <option value="Go">Go</option>
+                <option value="Rust">Rust</option>
+            </select>
+
+        </div>
+
+        <div
+            id="repository-list"
+            class="repository-grid"
+        ></div>
+
+    </section>
+
+</main>
+
+<footer>
+    <p>Dev Radar • Open Source Intelligence</p>
+</footer>
+
+<script
+    type="module"
+    src="/src/main.js"
+></script>
+
+</body>
+</html>

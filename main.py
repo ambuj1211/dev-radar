@@ -10,6 +10,7 @@ from core.history.store import (
     save_history,
 )
 from core.reports.daily import generate_daily_report
+from core.reports.json import generate_json_report
 
 
 def run_radar(
@@ -142,14 +143,22 @@ if __name__ == "__main__":
         max_age_days=180,
         limit=10,
     )
-    
+
     print_report(results)
-    
+
     report_path = generate_daily_report(
         results,
         topic,
     )
+
+    json_path = generate_json_report(
+        results,
+        topic,
+    )
     
+    print(
+        f"🌐 Web data generated: {json_path}"
+    )
     print(
         f"\n📄 Report generated: {report_path}"
     )
