@@ -1,8 +1,8 @@
 {
   "NousResearch/hermes-agent": {
     "radar_score": 100.0,
-    "stars": 231480,
-    "forks": 46041
+    "stars": 231482,
+    "forks": 46045
   },
   "openclaw/openclaw": {
     "radar_score": 99.53,
@@ -13,5 +13,15 @@
     "radar_score": 98.98,
     "stars": 197088,
     "forks": 76060
+  },
+  "rust-lang/rust": {
+    "radar_score": 99.99,
+    "stars": 115525,
+    "forks": 15422
+  },
+  "vercel/next.js": {
+    "radar_score": 99.29,
+    "stars": 141821,
+    "forks": 31750
   }
 }
