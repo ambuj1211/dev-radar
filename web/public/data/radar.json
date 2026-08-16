@@ -120,14 +120,14 @@
         "maintain": false,
         "push": false,
         "triage": false,
-        "pull": true
+        "pull": false
       },
       "score": 1.0,
       "contributors_count": 54,
       "radar_score": 82.23,
-      "change_type": "existing",
+      "change_type": "new",
       "star_change": 0,
-      "score_change": 0.0
+      "score_change": 0
     },
     {
       "id": 62087567,
@@ -243,14 +243,14 @@
         "maintain": false,
         "push": false,
         "triage": false,
-        "pull": true
+        "pull": false
       },
       "score": 1.0,
       "contributors_count": 122,
       "radar_score": 79.42,
-      "change_type": "existing",
+      "change_type": "new",
       "star_change": 0,
-      "score_change": -0.01
+      "score_change": 0
     },
     {
       "id": 373462930,
@@ -364,14 +364,14 @@
         "maintain": false,
         "push": false,
         "triage": false,
-        "pull": true
+        "pull": false
       },
       "score": 1.0,
       "contributors_count": 20,
       "radar_score": 74.08,
-      "change_type": "existing",
+      "change_type": "new",
       "star_change": 0,
-      "score_change": -0.01
+      "score_change": 0
     },
     {
       "id": 622510230,
@@ -493,14 +493,14 @@
         "maintain": false,
         "push": false,
         "triage": false,
-        "pull": true
+        "pull": false
       },
       "score": 1.0,
       "contributors_count": 15,
       "radar_score": 73.24,
-      "change_type": "existing",
+      "change_type": "new",
       "star_change": 0,
-      "score_change": -0.01
+      "score_change": 0
     },
     {
       "id": 629177820,
@@ -624,14 +624,14 @@
         "maintain": false,
         "push": false,
         "triage": false,
-        "pull": true
+        "pull": false
       },
       "score": 1.0,
       "contributors_count": 45,
       "radar_score": 72.92,
-      "change_type": "existing",
+      "change_type": "new",
       "star_change": 0,
-      "score_change": -0.01
+      "score_change": 0
     },
     {
       "id": 97159209,
@@ -761,14 +761,14 @@
         "maintain": false,
         "push": false,
         "triage": false,
-        "pull": true
+        "pull": false
       },
       "score": 1.0,
       "contributors_count": 4,
       "radar_score": 72.12,
-      "change_type": "existing",
+      "change_type": "new",
       "star_change": 0,
-      "score_change": 0.0
+      "score_change": 0
     },
     {
       "id": 677526746,
@@ -890,14 +890,14 @@
         "maintain": false,
         "push": false,
         "triage": false,
-        "pull": true
+        "pull": false
       },
       "score": 1.0,
       "contributors_count": 27,
       "radar_score": 71.59,
-      "change_type": "existing",
+      "change_type": "new",
       "star_change": 0,
-      "score_change": 0.0
+      "score_change": 0
     },
     {
       "id": 382817371,
@@ -1014,14 +1014,14 @@
         "maintain": false,
         "push": false,
         "triage": false,
-        "pull": true
+        "pull": false
       },
       "score": 1.0,
       "contributors_count": 11,
       "radar_score": 63.59,
-      "change_type": "existing",
+      "change_type": "new",
       "star_change": 0,
-      "score_change": 0.0
+      "score_change": 0
     },
     {
       "id": 737696911,
@@ -1142,14 +1142,14 @@
         "maintain": false,
         "push": false,
         "triage": false,
-        "pull": true
+        "pull": false
       },
       "score": 1.0,
       "contributors_count": 3,
       "radar_score": 61.95,
-      "change_type": "existing",
+      "change_type": "new",
       "star_change": 0,
-      "score_change": 0.0
+      "score_change": 0
     }
   ]
 }
