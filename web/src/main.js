@@ -52,14 +52,14 @@ function renderRepositories(language = "all") {
             <div class="metrics">
                 <span>
                     ⭐ ${Number(
-                        repository.stargazers_count || 0
-                    ).toLocaleString()}
+            repository.stargazers_count || 0
+        ).toLocaleString()}
                 </span>
 
                 <span>
                     🍴 ${Number(
-                        repository.forks_count || 0
-                    ).toLocaleString()}
+            repository.forks_count || 0
+        ).toLocaleString()}
                 </span>
 
                 <span>
@@ -124,7 +124,9 @@ async function loadRadar() {
     try {
 
         const response =
-            await fetch("/data/radar.json");
+            await fetch(
+                `${import.meta.env.BASE_URL}data/radar.json`
+            )
 
         if (!response.ok) {
             throw new Error(
