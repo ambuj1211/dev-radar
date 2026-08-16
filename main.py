@@ -9,7 +9,7 @@ from core.history.store import (
     load_history,
     save_history,
 )
-
+from core.reports.daily import generate_daily_report
 
 
 def run_radar(
@@ -133,12 +133,23 @@ def print_report(repositories: list[dict]) -> None:
 
 
 if __name__ == "__main__":
+    topic = "artificial intelligence"
+
     results = run_radar(
-        topic="artificial intelligence",
+        topic=topic,
         language="Python",
         min_stars=1000,
         max_age_days=180,
         limit=10,
     )
-
+    
     print_report(results)
+    
+    report_path = generate_daily_report(
+        results,
+        topic,
+    )
+    
+    print(
+        f"\n📄 Report generated: {report_path}"
+    )
