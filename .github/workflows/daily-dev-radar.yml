@@ -278,8 +278,7 @@ jobs:
 
           git add \
             reports \
-            web/public/data \
-            data
+            web/public/data
 
           if git diff --cached --quiet; then
             echo "ℹ️ No permanent data changes to commit."
