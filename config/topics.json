@@ -1,0 +1,153 @@
+{
+  "categories": {
+    "AI": [
+      "AI",
+      "Machine Learning",
+      "Deep Learning",
+      "Generative AI",
+      "LLM",
+      "AI Agents",
+      "RAG",
+      "MCP",
+      "Computer Vision",
+      "NLP",
+      "Multimodal AI",
+      "MLOps",
+      "AI Infrastructure",
+      "AI Developer Tools"
+    ],
+
+    "Programming": [
+      "C",
+      "C++",
+      "C#",
+      "Java",
+      "Python",
+      "JavaScript",
+      "TypeScript",
+      "Go",
+      "Rust",
+      "Kotlin",
+      "Swift",
+      "PHP",
+      "Ruby",
+      "Dart",
+      "R",
+      "Zig"
+    ],
+
+    "Web": [
+      "Web Development",
+      "Frontend",
+      "Backend",
+      "Full Stack",
+      "React",
+      "Next.js",
+      "Vue",
+      "Angular",
+      "Svelte",
+      "Node.js",
+      "APIs",
+      "Web Performance",
+      "Browser Technology"
+    ],
+
+    "Cybersecurity": [
+      "Cybersecurity",
+      "Ethical Hacking",
+      "Penetration Testing",
+      "Web Security",
+      "Application Security",
+      "Network Security",
+      "Cloud Security",
+      "OSINT",
+      "Digital Forensics",
+      "Vulnerability Research",
+      "Cryptography",
+      "Privacy",
+      "DevSecOps"
+    ],
+
+    "DevOps / Cloud": [
+      "DevOps",
+      "Docker",
+      "Kubernetes",
+      "CI/CD",
+      "Linux",
+      "AWS",
+      "Azure",
+      "Google Cloud",
+      "Terraform",
+      "Infrastructure as Code",
+      "Monitoring",
+      "Observability"
+    ],
+
+    "System Design / CS": [
+      "System Design",
+      "Software Architecture",
+      "Distributed Systems",
+      "Operating Systems",
+      "Computer Networks",
+      "Database Systems",
+      "Compilers",
+      "Algorithms",
+      "Data Structures",
+      "Parallel Computing"
+    ],
+
+    "Blockchain": [
+      "Blockchain",
+      "Web3",
+      "Ethereum",
+      "Smart Contracts",
+      "DeFi",
+      "Distributed Ledger"
+    ],
+
+    "Mobile": [
+      "Android",
+      "iOS",
+      "Flutter",
+      "React Native",
+      "Kotlin Multiplatform",
+      "Mobile Development"
+    ],
+
+    "Game Development": [
+      "Game Development",
+      "Unity",
+      "Unreal Engine",
+      "Godot",
+      "Game Engines",
+      "Graphics Programming",
+      "OpenGL",
+      "Vulkan",
+      "DirectX"
+    ],
+
+    "Developer Tools": [
+      "CLI",
+      "Git",
+      "GitHub",
+      "IDE Extensions",
+      "VS Code",
+      "Testing",
+      "Debugging",
+      "Automation",
+      "Developer Productivity",
+      "Open Source Tools"
+    ],
+
+    "Learning": [
+      "DSA",
+      "Competitive Programming",
+      "Programming Tutorials",
+      "CS Fundamentals",
+      "System Design Learning",
+      "Roadmaps",
+      "Interview Preparation",
+      "Learning Projects"
+    ]
+  }
+}
