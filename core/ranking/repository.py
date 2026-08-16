@@ -75,6 +75,177 @@ def community_score(
         + contributor_score * 0.7
     )
 
+def growth_score(
+    star_change: int,
+    stars: int,
+) -> float:
+    """Calculate repository growth score from star growth."""
+
+    if stars <= 0:
+        return 0.0
+
+    if star_change <= 0:
+        return 0.0
+
+    growth_ratio = star_change / stars
+
+    score = min(
+        growth_ratio * 10000,
+        100,
+    )
+
+    return round(score, 2)
+
+
+def developer_usefulness_score(
+    repository: dict,
+) -> float:
+    """
+    Estimate how useful a repository is to developers.
+
+    Signals:
+    - Forks
+    - Contributors
+    - Documentation
+    - Issues/community
+    - Repository type
+    """
+
+    forks = repository.get(
+        "forks_count",
+        0,
+    )
+
+    contributors = repository.get(
+        "contributors_count",
+        0,
+    )
+
+    open_issues = repository.get(
+        "open_issues_count",
+        0,
+    )
+
+    description = repository.get(
+        "description",
+        "",
+    )
+
+    homepage = repository.get(
+        "homepage",
+        "",
+    )
+
+    forks_score = min(
+        math.log10(max(forks, 1)) / 4 * 100,
+        100,
+    )
+
+    contributors_score = min(
+        math.log10(
+            max(contributors, 1)
+        ) / 3 * 100,
+        100,
+    )
+
+    community_score_value = min(
+        math.log10(
+            max(open_issues, 1)
+        ) / 4 * 100,
+        100,
+    )
+
+    documentation_score = 0.0
+
+    if description:
+        documentation_score += 60
+
+    if homepage:
+        documentation_score += 40
+
+    score = (
+        forks_score * 0.30
+        + contributors_score * 0.30
+        + community_score_value * 0.20
+        + documentation_score * 0.20
+    )
+
+    return round(
+        min(score, 100),
+        2,
+    )
+
+def calculate_usefulness_score(
+    repository: dict,
+) -> dict:
+    """Calculate the developer usefulness score."""
+
+    popularity = popularity_score(
+        repository.get(
+            "stargazers_count",
+            0,
+        ),
+        repository.get(
+            "forks_count",
+            0,
+        ),
+    )
+
+    freshness = freshness_score(
+        repository.get(
+            "updated_at",
+            "",
+        )
+    )
+
+    community = community_score(
+        repository.get(
+            "open_issues_count",
+            0,
+        ),
+        repository.get(
+            "contributors_count",
+            0,
+        ),
+    )
+
+    growth = growth_score(
+        repository.get(
+            "star_change",
+            0,
+        ),
+        repository.get(
+            "stargazers_count",
+            0,
+        ),
+    )
+
+    usefulness = developer_usefulness_score(
+        repository
+    )
+
+    score = (
+        popularity * 0.25
+        + freshness * 0.20
+        + community * 0.15
+        + growth * 0.15
+        + usefulness * 0.25
+    )
+
+    return {
+        "popularity": round(popularity, 2),
+        "freshness": round(freshness, 2),
+        "community": round(community, 2),
+        "growth": round(growth, 2),
+        "developer_usefulness": round(
+            usefulness,
+            2,
+        ),
+        "usefulness_score": round(
+            score,
+            2,
+        ),
+    }
 
 def calculate_score_breakdown(
     repository: dict,
@@ -123,7 +294,7 @@ def calculate_radar_score(
 def rank_repositories(
     repositories: list[dict],
 ) -> list[dict]:
-    """Add radar score and score breakdown."""
+    """Rank repositories using quality and developer usefulness."""
 
     ranked = []
 
@@ -144,10 +315,29 @@ def rank_repositories(
             2,
         )
 
+        usefulness = calculate_usefulness_score(
+            repository
+        )
+
+        repository[
+            "usefulness_breakdown"
+        ] = usefulness
+
+        repository[
+            "developer_usefulness_score"
+        ] = usefulness[
+            "usefulness_score"
+        ]
+
         ranked.append(repository)
 
     ranked.sort(
-        key=lambda repo: repo["radar_score"],
+        key=lambda repository: (
+            repository[
+                "developer_usefulness_score"
+            ],
+            repository["radar_score"],
+        ),
         reverse=True,
     )
 

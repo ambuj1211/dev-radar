@@ -90,39 +90,101 @@ def enrich_repository(repository: dict) -> dict:
 
     owner, name = full_name.split("/", 1)
 
-    details = get_repository(owner, name)
+    details = get_repository(
+        owner,
+        name,
+    )
 
     enriched = repository.copy()
 
     enriched.update(
         {
-            "description": details.get("description"),
-            "forks_count": details.get("forks_count", 0),
+            "description": details.get(
+                "description"
+            ),
+
+            "forks_count": details.get(
+                "forks_count",
+                0,
+            ),
+
             "open_issues_count": details.get(
                 "open_issues_count",
                 0,
             ),
+
             "watchers_count": details.get(
                 "watchers_count",
                 0,
             ),
-            "language": details.get("language"),
-            "created_at": details.get("created_at"),
-            "updated_at": details.get("updated_at"),
-            "pushed_at": details.get("pushed_at"),
-            "archived": details.get("archived", False),
+
+            "language": details.get(
+                "language"
+            ),
+
+            "created_at": details.get(
+                "created_at"
+            ),
+
+            "updated_at": details.get(
+                "updated_at"
+            ),
+
+            "pushed_at": details.get(
+                "pushed_at"
+            ),
+
+            "archived": details.get(
+                "archived",
+                False,
+            ),
+
             "license": (
                 details.get("license") or {}
-            ).get("spdx_id"),
+            ).get(
+                "spdx_id"
+            ),
+
+            "homepage": details.get(
+                "homepage"
+            ),
+
+            "topics": details.get(
+                "topics",
+                []
+            ),
+
+            "default_branch": details.get(
+                "default_branch",
+                "main",
+            ),
+
+            "has_wiki": details.get(
+                "has_wiki",
+                False,
+            ),
+
+            "has_issues": details.get(
+                "has_issues",
+                False,
+            ),
+
+            "has_discussions": details.get(
+                "has_discussions",
+                False,
+            ),
         }
     )
 
-    enriched["contributors_count"] = get_contributor_count(
-        owner,
-        name,
+    enriched["contributors_count"] = (
+        get_contributor_count(
+            owner,
+            name,
+        )
     )
 
     return enriched
+
 
 def get_contributor_count(
     owner: str,
@@ -170,3 +232,30 @@ def get_contributor_count(
     data = response.json()
 
     return len(data)
+
+def get_repository_readme(
+    owner: str,
+    name: str,
+) -> str:
+    """Download the repository README as Markdown."""
+
+    url = (
+        f"{GITHUB_API_BASE}/repos/"
+        f"{owner}/{name}/readme"
+    )
+
+    headers = get_headers()
+    headers["Accept"] = "application/vnd.github.raw+json"
+
+    response = requests.get(
+        url,
+        headers=headers,
+        timeout=15,
+    )
+
+    if response.status_code == 404:
+        return ""
+
+    response.raise_for_status()
+
+    return response.text

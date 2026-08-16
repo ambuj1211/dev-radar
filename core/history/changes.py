@@ -7,9 +7,13 @@ def detect_changes(
     results = []
 
     for repository in repositories:
+
         name = repository.get("full_name")
 
-        previous = previous_history.get(name)
+        previous = previous_history.get(
+            name,
+            {},
+        )
 
         current_stars = repository.get(
             "stargazers_count",
@@ -21,12 +25,14 @@ def detect_changes(
             0,
         )
 
-        if previous is None:
+        if not previous:
+
             repository["change_type"] = "new"
             repository["star_change"] = 0
             repository["score_change"] = 0
 
         else:
+
             repository["change_type"] = "existing"
 
             repository["star_change"] = (
@@ -36,7 +42,10 @@ def detect_changes(
 
             repository["score_change"] = round(
                 current_score
-                - previous.get("radar_score", 0),
+                - previous.get(
+                    "radar_score",
+                    0,
+                ),
                 2,
             )
 

@@ -1,0 +1,94 @@
+name: Daily Dev Radar
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  daily-radar:
+    runs-on: ubuntu-latest
+
+    env:
+      KAGGLE_API_TOKEN: ${{ secrets.KAGGLE_API_TOKEN }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install kaggle
+
+      - name: Check Kaggle authentication
+        run: |
+          kaggle config view
+
+      - name: Run Dev Radar
+        run: |
+          python main.py
+
+      - name: Verify Kaggle input
+        run: |
+          echo "===== daily_input.json ====="
+          cat kaggle-worker/input/daily_input.json
+
+      - name: Update Kaggle dataset
+        run: |
+          kaggle datasets version \
+            -p kaggle-worker/input \
+            -m "Daily Dev Radar input"
+
+      - name: Run Kaggle AI worker
+        run: |
+          kaggle kernels push \
+            -p kaggle-worker \
+            --accelerator NvidiaTeslaT4
+
+      - name: Wait for Kaggle worker
+        run: |
+          for i in {1..60}; do
+            STATUS=$(kaggle kernels status \
+              brilliantambuj1211/dev-radar-ai-worker \
+              2>&1 || true)
+
+            echo "$STATUS"
+
+            if echo "$STATUS" | grep -q "COMPLETE"; then
+              echo "Kaggle worker completed."
+              exit 0
+            fi
+
+            if echo "$STATUS" | grep -q "ERROR"; then
+              echo "Kaggle worker failed."
+              exit 1
+            fi
+
+            sleep 30
+          done
+
+          echo "Kaggle worker timed out."
+          exit 1
+
+      - name: Download AI analysis
+        run: |
+          mkdir -p kaggle-worker/output
+          rm -f kaggle-worker/output/*
+
+          kaggle kernels output \
+            brilliantambuj1211/dev-radar-ai-worker \
+            -p kaggle-worker/output \
+            --file-pattern "ai_analysis.json"
+
+      - name: Verify AI analysis
+        run: |
+          test -f kaggle-worker/output/ai_analysis.json
+          cat kaggle-worker/output/ai_analysis.json

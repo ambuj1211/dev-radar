@@ -1,0 +1,15 @@
+{
+  "id": "brilliantambuj1211/dev-radar-ai-worker",
+  "title": "Dev Radar AI Worker",
+  "code_file": "inference.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": true,
+  "dataset_sources": ["brilliantambuj1211/dev-radar-input"],
+  "competition_sources": [],
+  "kernel_sources": [],
+  "model_sources": [],
+  "enable_tpu": false
+}

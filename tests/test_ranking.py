@@ -2,8 +2,47 @@ from core.ranking.repository import (
     calculate_radar_score,
     freshness_score,
     rank_repositories,
+    developer_usefulness_score,
+    growth_score,
 )
 
+def test_growth_score():
+
+    score = growth_score(
+        star_change=1000,
+        stars=10000,
+    )
+
+    assert score > 0
+    assert score <= 100
+
+
+def test_zero_growth():
+
+    score = growth_score(
+        star_change=0,
+        stars=10000,
+    )
+
+    assert score == 0
+
+
+def test_developer_usefulness():
+
+    repository = {
+        "forks_count": 5000,
+        "contributors_count": 200,
+        "open_issues_count": 100,
+        "description": "Developer tool",
+        "homepage": "https://example.com",
+    }
+
+    score = developer_usefulness_score(
+        repository
+    )
+
+    assert score > 0
+    assert score <= 100
 
 def test_freshness_score():
     score = freshness_score(
