@@ -267,33 +267,20 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email \
             "41898282+github-actions[bot]@users.noreply.github.com"
-
-          # Only commit permanent application data.
-          #
-          # Do NOT commit:
-          #   kaggle-worker/input
-          #   kaggle-worker/output
-          #
-          # These are temporary AI pipeline files.
-
-          git add \
-            reports \
-            web/public/data
-
+      
+          if [ -d "web/public/data" ]; then
+            git add web/public/data
+          fi
+      
           if git diff --cached --quiet; then
             echo "ℹ️ No permanent data changes to commit."
             exit 0
           fi
-
-          git commit \
-            -m "chore: update daily radar"
-
-          # Get latest remote changes before pushing.
-          git pull \
-            --rebase \
-            origin main
-
-          git push \
-            origin main
-
+      
+          git commit -m "chore: update daily radar"
+      
+          git pull --rebase origin main
+      
+          git push origin main
+      
           echo "✅ Changes pushed successfully."
