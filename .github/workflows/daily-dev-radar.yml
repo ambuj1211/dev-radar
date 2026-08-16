@@ -268,18 +268,31 @@ jobs:
           git config user.email \
             "41898282+github-actions[bot]@users.noreply.github.com"
       
+          echo "===== Git status before commit ====="
+          git status --short
+      
+          # Add permanent website data only.
           if [ -d "web/public/data" ]; then
             git add web/public/data
           fi
       
+          # Commit if there are staged changes.
           if git diff --cached --quiet; then
             echo "ℹ️ No permanent data changes to commit."
-            exit 0
+          else
+            git commit -m "chore: update daily radar"
           fi
       
-          git commit -m "chore: update daily radar"
+          echo "===== Git status before rebase ====="
+          git status --short
       
-          git pull --rebase origin main
+          # Rebase on the latest remote main branch.
+          # --autostash temporarily stores any unstaged
+          # changes so the rebase can proceed.
+          git pull \
+            --rebase \
+            --autostash \
+            origin main
       
           git push origin main
       
