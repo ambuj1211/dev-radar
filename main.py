@@ -37,8 +37,9 @@ from core.discovery.radar import (
     discover_candidates,
 )
 
-from core.discovery.topics import (
+from core.discovery.daily_topics import (
     get_daily_topics,
+    get_daily_topic_group_name,
 )
 
 from core.ai.pipeline import (
