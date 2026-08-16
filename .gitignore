@@ -217,8 +217,6 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 
-reports/__init__.py
-reports/__pycache__/
-reports/*.md
-data/
-web/node_modules/
+/reports/*.md
+/data/
+/web/node_modules/
