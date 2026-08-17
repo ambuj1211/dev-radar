@@ -23,5 +23,20 @@
     "radar_score": 99.29,
     "stars": 141821,
     "forks": 31750
+  },
+  "flutter/flutter": {
+    "radar_score": 100.0,
+    "stars": 178434,
+    "forks": 30965
+  },
+  "microsoft/TypeScript": {
+    "radar_score": 99.3,
+    "stars": 110186,
+    "forks": 13719
+  },
+  "llvm/llvm-project": {
+    "radar_score": 97.76,
+    "stars": 39824,
+    "forks": 18261
   }
 }
