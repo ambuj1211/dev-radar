@@ -51,7 +51,17 @@
   },
   "storybookjs/storybook": {
     "radar_score": 98.36,
-    "stars": 90861,
-    "forks": 10392
+    "stars": 90872,
+    "forks": 10391
+  },
+  "opencv/opencv": {
+    "radar_score": 98.7,
+    "stars": 90492,
+    "forks": 56968
+  },
+  "immich-app/immich": {
+    "radar_score": 97.25,
+    "stars": 111579,
+    "forks": 6604
   }
 }
