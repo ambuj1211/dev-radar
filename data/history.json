@@ -63,5 +63,20 @@
     "radar_score": 97.25,
     "stars": 111579,
     "forks": 6604
+  },
+  "huggingface/transformers": {
+    "radar_score": 98.84,
+    "stars": 164271,
+    "forks": 34293
+  },
+  "nodejs/node": {
+    "radar_score": 98.42,
+    "stars": 119020,
+    "forks": 36530
+  },
+  "ziglang/zig": {
+    "radar_score": 95.45,
+    "stars": 43315,
+    "forks": 3233
   }
 }
