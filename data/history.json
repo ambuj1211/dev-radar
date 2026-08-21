@@ -1,13 +1,13 @@
 {
   "NousResearch/hermes-agent": {
     "radar_score": 100.0,
-    "stars": 231482,
-    "forks": 46045
+    "stars": 233615,
+    "forks": 46829
   },
   "openclaw/openclaw": {
-    "radar_score": 99.53,
-    "stars": 386464,
-    "forks": 81209
+    "radar_score": 99.56,
+    "stars": 386938,
+    "forks": 81276
   },
   "tensorflow/tensorflow": {
     "radar_score": 98.98,
@@ -78,5 +78,10 @@
     "radar_score": 95.45,
     "stars": 43315,
     "forks": 3233
+  },
+  "go-gitea/gitea": {
+    "radar_score": 97.07,
+    "stars": 57525,
+    "forks": 7023
   }
 }
