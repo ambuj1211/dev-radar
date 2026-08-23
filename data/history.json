@@ -88,5 +88,20 @@
     "radar_score": 98.9,
     "stars": 186140,
     "forks": 16043
+  },
+  "react/react": {
+    "radar_score": 98.31,
+    "stars": 247666,
+    "forks": 51248
+  },
+  "electron/electron": {
+    "radar_score": 97.95,
+    "stars": 122654,
+    "forks": 17431
+  },
+  "Comfy-Org/ComfyUI": {
+    "radar_score": 96.63,
+    "stars": 129028,
+    "forks": 15226
   }
 }
