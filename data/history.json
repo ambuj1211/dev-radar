@@ -30,9 +30,9 @@
     "forks": 30965
   },
   "microsoft/TypeScript": {
-    "radar_score": 99.3,
-    "stars": 110186,
-    "forks": 13719
+    "radar_score": 99.46,
+    "stars": 110634,
+    "forks": 13755
   },
   "llvm/llvm-project": {
     "radar_score": 97.76,
@@ -103,5 +103,15 @@
     "radar_score": 96.63,
     "stars": 129028,
     "forks": 15226
+  },
+  "microsoft/vscode": {
+    "radar_score": 100.0,
+    "stars": 189349,
+    "forks": 41783
+  },
+  "oven-sh/bun": {
+    "radar_score": 98.66,
+    "stars": 95622,
+    "forks": 4993
   }
 }
