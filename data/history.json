@@ -50,9 +50,9 @@
     "forks": 21831
   },
   "storybookjs/storybook": {
-    "radar_score": 98.36,
-    "stars": 90872,
-    "forks": 10391
+    "radar_score": 98.34,
+    "stars": 90949,
+    "forks": 10411
   },
   "opencv/opencv": {
     "radar_score": 98.7,
@@ -123,5 +123,15 @@
     "radar_score": 99.99,
     "stars": 116097,
     "forks": 26471
+  },
+  "langgenius/dify": {
+    "radar_score": 98.09,
+    "stars": 153665,
+    "forks": 24287
+  },
+  "infiniflow/ragflow": {
+    "radar_score": 97.62,
+    "stars": 89381,
+    "forks": 10516
   }
 }
