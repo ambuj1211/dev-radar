@@ -51,18 +51,18 @@
   },
   "storybookjs/storybook": {
     "radar_score": 98.35,
-    "stars": 90953,
-    "forks": 10414
+    "stars": 90957,
+    "forks": 10416
   },
   "opencv/opencv": {
-    "radar_score": 98.7,
-    "stars": 90492,
-    "forks": 56968
+    "radar_score": 98.69,
+    "stars": 90640,
+    "forks": 56976
   },
   "immich-app/immich": {
-    "radar_score": 97.25,
-    "stars": 111579,
-    "forks": 6604
+    "radar_score": 97.29,
+    "stars": 112897,
+    "forks": 6748
   },
   "huggingface/transformers": {
     "radar_score": 98.82,
