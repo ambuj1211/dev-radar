@@ -30,9 +30,9 @@
     "forks": 30965
   },
   "microsoft/TypeScript": {
-    "radar_score": 99.46,
-    "stars": 110634,
-    "forks": 13755
+    "radar_score": 99.45,
+    "stars": 110883,
+    "forks": 13798
   },
   "llvm/llvm-project": {
     "radar_score": 97.76,
@@ -106,13 +106,13 @@
   },
   "microsoft/vscode": {
     "radar_score": 100.0,
-    "stars": 189349,
-    "forks": 41783
+    "stars": 190828,
+    "forks": 41962
   },
   "oven-sh/bun": {
-    "radar_score": 98.67,
-    "stars": 95692,
-    "forks": 5000
+    "radar_score": 98.7,
+    "stars": 95882,
+    "forks": 5030
   },
   "golang/go": {
     "radar_score": 100.0,
