@@ -125,13 +125,18 @@
     "forks": 26607
   },
   "langgenius/dify": {
-    "radar_score": 98.09,
-    "stars": 153665,
-    "forks": 24287
+    "radar_score": 98.17,
+    "stars": 154699,
+    "forks": 24455
   },
   "infiniflow/ragflow": {
-    "radar_score": 97.62,
-    "stars": 89381,
-    "forks": 10516
+    "radar_score": 97.68,
+    "stars": 90182,
+    "forks": 10639
+  },
+  "langchain-ai/langchain": {
+    "radar_score": 97.48,
+    "stars": 145841,
+    "forks": 24362
   }
 }
