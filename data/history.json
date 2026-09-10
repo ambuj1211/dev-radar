@@ -66,18 +66,18 @@
   },
   "huggingface/transformers": {
     "radar_score": 98.84,
-    "stars": 164710,
-    "forks": 34422
+    "stars": 165062,
+    "forks": 34494
   },
   "nodejs/node": {
     "radar_score": 98.27,
-    "stars": 119953,
-    "forks": 36631
+    "stars": 121155,
+    "forks": 36710
   },
   "ziglang/zig": {
-    "radar_score": 95.41,
-    "stars": 43305,
-    "forks": 3225
+    "radar_score": 95.35,
+    "stars": 43308,
+    "forks": 3208
   },
   "go-gitea/gitea": {
     "radar_score": 97.07,
