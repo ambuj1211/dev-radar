@@ -10,9 +10,9 @@
     "forks": 82059
   },
   "tensorflow/tensorflow": {
-    "radar_score": 99.02,
-    "stars": 198352,
-    "forks": 76224
+    "radar_score": 99.09,
+    "stars": 200239,
+    "forks": 77037
   },
   "rust-lang/rust": {
     "radar_score": 100.0,
@@ -65,9 +65,9 @@
     "forks": 6990
   },
   "huggingface/transformers": {
-    "radar_score": 98.84,
-    "stars": 166429,
-    "forks": 34641
+    "radar_score": 98.83,
+    "stars": 166507,
+    "forks": 34657
   },
   "nodejs/node": {
     "radar_score": 98.26,
@@ -85,9 +85,9 @@
     "forks": 7023
   },
   "yt-dlp/yt-dlp": {
-    "radar_score": 98.91,
-    "stars": 188443,
-    "forks": 16308
+    "radar_score": 98.92,
+    "stars": 192786,
+    "forks": 16729
   },
   "react/react": {
     "radar_score": 98.38,
