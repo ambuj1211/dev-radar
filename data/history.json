@@ -91,13 +91,13 @@
   },
   "react/react": {
     "radar_score": 98.38,
-    "stars": 250096,
-    "forks": 51335
+    "stars": 250661,
+    "forks": 51390
   },
   "electron/electron": {
-    "radar_score": 97.9,
-    "stars": 123017,
-    "forks": 17492
+    "radar_score": 97.91,
+    "stars": 123204,
+    "forks": 17547
   },
   "Comfy-Org/ComfyUI": {
     "radar_score": 96.75,
@@ -138,5 +138,10 @@
     "radar_score": 97.48,
     "stars": 145841,
     "forks": 24362
+  },
+  "react/react-native": {
+    "radar_score": 98.24,
+    "stars": 126701,
+    "forks": 25281
   }
 }
