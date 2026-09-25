@@ -25,14 +25,14 @@
     "forks": 32093
   },
   "flutter/flutter": {
-    "radar_score": 100.0,
-    "stars": 178434,
+    "radar_score": 99.99,
+    "stars": 178430,
     "forks": 30965
   },
   "microsoft/TypeScript": {
-    "radar_score": 99.44,
-    "stars": 111173,
-    "forks": 14630
+    "radar_score": 99.29,
+    "stars": 110184,
+    "forks": 13719
   },
   "llvm/llvm-project": {
     "radar_score": 97.76,
@@ -143,5 +143,10 @@
     "radar_score": 98.24,
     "stars": 126701,
     "forks": 25281
+  },
+  "home-assistant/core": {
+    "radar_score": 98.96,
+    "stars": 89932,
+    "forks": 38368
   }
 }
