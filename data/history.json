@@ -50,9 +50,9 @@
     "forks": 23959
   },
   "storybookjs/storybook": {
-    "radar_score": 98.41,
-    "stars": 91178,
-    "forks": 10472
+    "radar_score": 98.42,
+    "stars": 91205,
+    "forks": 10471
   },
   "opencv/opencv": {
     "radar_score": 98.73,
@@ -125,14 +125,14 @@
     "forks": 26949
   },
   "langgenius/dify": {
-    "radar_score": 98.22,
-    "stars": 157303,
-    "forks": 24793
+    "radar_score": 98.18,
+    "stars": 157994,
+    "forks": 24933
   },
   "infiniflow/ragflow": {
-    "radar_score": 97.83,
-    "stars": 91346,
-    "forks": 10831
+    "radar_score": 97.89,
+    "stars": 91759,
+    "forks": 10904
   },
   "langchain-ai/langchain": {
     "radar_score": 97.48,
