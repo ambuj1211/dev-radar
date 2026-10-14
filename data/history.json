@@ -30,9 +30,9 @@
     "forks": 30965
   },
   "microsoft/TypeScript": {
-    "radar_score": 99.29,
-    "stars": 110184,
-    "forks": 13719
+    "radar_score": 99.45,
+    "stars": 111454,
+    "forks": 16751
   },
   "llvm/llvm-project": {
     "radar_score": 97.76,
@@ -105,9 +105,9 @@
     "forks": 16337
   },
   "microsoft/vscode": {
-    "radar_score": 99.99,
-    "stars": 192842,
-    "forks": 43058
+    "radar_score": 100.0,
+    "stars": 193769,
+    "forks": 45445
   },
   "oven-sh/bun": {
     "radar_score": 98.78,
@@ -153,5 +153,10 @@
     "radar_score": 97.52,
     "stars": 88375,
     "forks": 7521
+  },
+  "angular/angular": {
+    "radar_score": 98.25,
+    "stars": 101057,
+    "forks": 30329
   }
 }
