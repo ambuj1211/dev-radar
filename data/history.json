@@ -1,8 +1,8 @@
 {
   "NousResearch/hermes-agent": {
     "radar_score": 100.0,
-    "stars": 252660,
-    "forks": 54649
+    "stars": 253894,
+    "forks": 55110
   },
   "openclaw/openclaw": {
     "radar_score": 99.96,
@@ -116,13 +116,13 @@
   },
   "golang/go": {
     "radar_score": 99.99,
-    "stars": 139255,
-    "forks": 21345
+    "stars": 139179,
+    "forks": 22366
   },
   "godotengine/godot": {
     "radar_score": 100.0,
-    "stars": 118138,
-    "forks": 26949
+    "stars": 118422,
+    "forks": 27061
   },
   "langgenius/dify": {
     "radar_score": 98.18,
