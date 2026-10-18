@@ -126,8 +126,8 @@
   },
   "langgenius/dify": {
     "radar_score": 98.23,
-    "stars": 158685,
-    "forks": 25082
+    "stars": 158753,
+    "forks": 25092
   },
   "infiniflow/ragflow": {
     "radar_score": 97.84,
@@ -158,5 +158,15 @@
     "radar_score": 98.25,
     "stars": 101057,
     "forks": 30329
+  },
+  "n8n-io/n8n": {
+    "radar_score": 97.79,
+    "stars": 207859,
+    "forks": 61175
+  },
+  "open-webui/open-webui": {
+    "radar_score": 96.88,
+    "stars": 156017,
+    "forks": 22709
   }
 }
