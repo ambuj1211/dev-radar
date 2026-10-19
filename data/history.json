@@ -51,13 +51,13 @@
   },
   "storybookjs/storybook": {
     "radar_score": 98.42,
-    "stars": 91210,
-    "forks": 10473
+    "stars": 91334,
+    "forks": 10498
   },
   "opencv/opencv": {
-    "radar_score": 98.72,
-    "stars": 91127,
-    "forks": 57039
+    "radar_score": 98.75,
+    "stars": 91226,
+    "forks": 57045
   },
   "immich-app/immich": {
     "radar_score": 97.39,
@@ -150,9 +150,9 @@
     "forks": 38368
   },
   "sveltejs/svelte": {
-    "radar_score": 97.52,
-    "stars": 88375,
-    "forks": 7521
+    "radar_score": 97.74,
+    "stars": 88404,
+    "forks": 8590
   },
   "angular/angular": {
     "radar_score": 98.25,
