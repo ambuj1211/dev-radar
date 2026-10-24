@@ -30,9 +30,9 @@
     "forks": 30965
   },
   "microsoft/TypeScript": {
-    "radar_score": 99.45,
-    "stars": 111454,
-    "forks": 16751
+    "radar_score": 99.47,
+    "stars": 111581,
+    "forks": 16654
   },
   "llvm/llvm-project": {
     "radar_score": 97.76,
@@ -106,8 +106,8 @@
   },
   "microsoft/vscode": {
     "radar_score": 100.0,
-    "stars": 193769,
-    "forks": 45445
+    "stars": 194256,
+    "forks": 45463
   },
   "oven-sh/bun": {
     "radar_score": 98.78,
@@ -155,9 +155,9 @@
     "forks": 8590
   },
   "angular/angular": {
-    "radar_score": 98.25,
-    "stars": 101057,
-    "forks": 30329
+    "radar_score": 98.21,
+    "stars": 101098,
+    "forks": 30232
   },
   "n8n-io/n8n": {
     "radar_score": 97.79,
