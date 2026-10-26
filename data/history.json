@@ -1,8 +1,8 @@
 {
   "NousResearch/hermes-agent": {
     "radar_score": 100.0,
-    "stars": 256888,
-    "forks": 56222
+    "stars": 257189,
+    "forks": 56341
   },
   "openclaw/openclaw": {
     "radar_score": 99.97,
@@ -16,13 +16,13 @@
   },
   "rust-lang/rust": {
     "radar_score": 100.0,
-    "stars": 120399,
-    "forks": 18862
+    "stars": 120815,
+    "forks": 17996
   },
   "vercel/next.js": {
-    "radar_score": 99.18,
-    "stars": 143030,
-    "forks": 35068
+    "radar_score": 99.2,
+    "stars": 143295,
+    "forks": 34122
   },
   "flutter/flutter": {
     "radar_score": 99.99,
