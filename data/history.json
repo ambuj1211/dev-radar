@@ -50,14 +50,14 @@
     "forks": 24624
   },
   "storybookjs/storybook": {
-    "radar_score": 98.39,
-    "stars": 91389,
-    "forks": 10466
+    "radar_score": 98.34,
+    "stars": 91403,
+    "forks": 10477
   },
   "opencv/opencv": {
     "radar_score": 98.75,
-    "stars": 91226,
-    "forks": 57045
+    "stars": 91367,
+    "forks": 57065
   },
   "immich-app/immich": {
     "radar_score": 97.39,
@@ -173,5 +173,10 @@
     "radar_score": 99.08,
     "stars": 128569,
     "forks": 47097
+  },
+  "hashicorp/terraform": {
+    "radar_score": 96.98,
+    "stars": 50094,
+    "forks": 10598
   }
 }
