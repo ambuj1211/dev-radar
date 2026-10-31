@@ -1,13 +1,13 @@
 {
   "NousResearch/hermes-agent": {
     "radar_score": 100.0,
-    "stars": 257189,
-    "forks": 56341
+    "stars": 258994,
+    "forks": 56936
   },
   "openclaw/openclaw": {
-    "radar_score": 99.97,
-    "stars": 392713,
-    "forks": 82547
+    "radar_score": 99.81,
+    "stars": 393515,
+    "forks": 82709
   },
   "tensorflow/tensorflow": {
     "radar_score": 99.12,
@@ -45,9 +45,9 @@
     "forks": 17272
   },
   "ggml-org/llama.cpp": {
-    "radar_score": 98.89,
-    "stars": 131887,
-    "forks": 24624
+    "radar_score": 98.9,
+    "stars": 132927,
+    "forks": 24991
   },
   "storybookjs/storybook": {
     "radar_score": 98.34,
